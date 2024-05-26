@@ -1,4 +1,9 @@
 
+using DAL_00013075;
+using DAL_00013075.Models_00013075;
+using DAL_00013075.Repositories_00013075;
+using Microsoft.EntityFrameworkCore;
+
 namespace API_00013075
 {
     public class Program
@@ -13,6 +18,11 @@ namespace API_00013075
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<BookDbContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddTransient<IRepository<Author>, AuthorRepository>();
+            builder.Services.AddTransient<IRepository<Book>, BookRepository>();
 
             var app = builder.Build();
 
