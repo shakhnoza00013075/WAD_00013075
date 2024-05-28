@@ -1,12 +1,14 @@
 <p>authors works!</p>
+<a [routerLink]="['/create-author']"><button>Create</button></a>
 
-<table>
-    <thead>
+<table class="table table-striped">
+    <thead class="thead-dark">
         <tr>
             <th>Id</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Birthday</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -16,6 +18,10 @@
                 <td>{{author.firstName}}</td>
                 <td>{{author.lastName}}</td>
                 <td>{{author.birthday}}</td>
+                <td>
+                    <a [routerLink]="['/edit-author', author.id]"><button>Edit</button></a>
+                    <a><button (click)="delete(author.id)">Delete</button></a>
+                </td>
             </tr>
         }
     </tbody>

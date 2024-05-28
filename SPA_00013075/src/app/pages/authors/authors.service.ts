@@ -15,7 +15,7 @@ export class AuthorsService {
   }
 
   get(id: number): Observable<Author>{
-    return this.httpClient.get<Author>(this.api + id);
+    return this.httpClient.get<Author>(this.api + 'id?id=' + id);
   }
 
   add(author: Author): Observable<any>{
@@ -23,10 +23,11 @@ export class AuthorsService {
   }
 
   delete(id: number): Observable<any>{
-    return this.httpClient.delete<Author>(this.api + id);
+    console.log(this.api + 'id?id=' + id);
+    return this.httpClient.delete<Author>(this.api + 'id?id=' + id);
   }
 
   edit(id: number, author: Author){
-    return this.httpClient.put<Author>(this.api + id, author);
+    return this.httpClient.put<Author>(this.api + 'id?id=' + id, author);
   }
 }

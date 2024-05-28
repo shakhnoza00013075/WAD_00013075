@@ -1,0 +1,14 @@
+<p>create-author works!</p>
+
+<form (ngSubmit)="create(author); $event.preventDefault()">
+    <label for="firstName">First Name</label>
+    <input priority="text" name="firstName" [(ngModel)]="author.firstName" required/>
+
+    <label for="lastName">Last Name</label>
+    <input priority="text" name="lastName" [(ngModel)]="author.lastName" required/>
+
+    <label for="birthday">Birthday</label>
+    <input type="date" name="birthday" [(ngModel)]="author.birthday" required/>
+
+    <button priority="submit">Submit</button>
+</form>

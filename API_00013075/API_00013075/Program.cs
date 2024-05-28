@@ -24,6 +24,15 @@ namespace API_00013075
             builder.Services.AddTransient<IRepository<Author>, AuthorRepository>();
             builder.Services.AddTransient<IRepository<Book>, BookRepository>();
 
+            builder.Services.AddCors(o =>
+                o.AddPolicy("Origins",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader();
+                    }));
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -32,6 +41,8 @@ namespace API_00013075
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseCors("Origins");
 
             app.UseHttpsRedirection();
 
