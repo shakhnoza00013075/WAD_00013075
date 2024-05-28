@@ -1,0 +1,22 @@
+<p>authors works!</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Birthday</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (author of authors; track $index) {
+            <tr>
+                <td>{{author.id}}</td>
+                <td>{{author.firstName}}</td>
+                <td>{{author.lastName}}</td>
+                <td>{{author.birthday}}</td>
+            </tr>
+        }
+    </tbody>
+</table>
